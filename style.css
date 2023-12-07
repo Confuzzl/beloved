@@ -1,48 +1,86 @@
 p {
-  margin: 0;
-  text-indent: 4vmin;
+    margin: 0;
+    text-indent: 4vmin;
 }
 
-span::after {
-  content: "\2003";
+#excerpt .poi::after {
+    content: "\2003";
+    /* background-color: gainsboro; */
+    /* background-color: red; */
+}
+
+.poi:hover {
+    background-color: gainsboro;
+}
+
+.poi[selected] {
+    background-color: yellow;
+    transition: all 0.5s linear;
 }
 
 .flush,
 #chapter_2 p {
-  text-indent: 0;
+    text-indent: 0;
 }
 
 body {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 2vmin;
+    margin: 0;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 2vmin;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    height: 100vh;
+    /* overflow: scroll; */
 }
 
-.excerpt {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  gap: 10vmin;
+main>* {
+    box-sizing: border-box;
+    padding: 50vh 5vmin 5vmin 5vmin;
+    scroll-behavior: smooth;
+
+    height: 100%;
+    overflow-y: scroll;
+
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#excerpt {
+    gap: 10vmin;
 }
 
 .chapter {
-  display: flex;
-  flex-direction: column;
-  gap: 3vmin;
+    display: flex;
+    flex-direction: column;
+    gap: 3vmin;
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .poem {
-  display: flex;
-  flex-direction: column;
-  gap: 3vmin;
+    display: flex;
+    flex-direction: column;
+    gap: 3vmin;
+}
+
+#annotations {}
+
+.annotation {
+    user-select: none;
+    cursor: pointer;
+}
+
+.annotation:hover {
+    background-color: gainsboro;
+}
+
+.annotation[selected] {
+    background-color: yellow;
+    transition: all 0.5s linear;
 }
