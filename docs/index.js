@@ -2,7 +2,76 @@ const excerpt = document.getElementById("excerpt");
 const annotations = document.getElementById("annotations");
 const focusIndicator = document.getElementById("focus_indicator");
 
-const annotationMap = [`Who is the "she" Beloved is referring to?`];
+const annotationMap = new Map([
+    [
+        0,
+        /*html*/ `
+        <p>Who is "she"?</p>
+        <p>"Sethe is the one that picked flowers, yellow flowers in the place before the crouching. Took them away from their green leaves. They are on the quilt now where we sleep." (253)</p>
+        <p>"She" is slaveship Beloved's mother</p>
+        `,
+    ],
+    [
+        1,
+        /*html*/ `
+        <p>First instance of "a hot thing"</p>
+        <p>"'Were you cold?' Beloved curled tighter and shook her head. 'Hot.'"</p>
+    `,
+    ],
+    [
+        2,
+        /*html*/ `
+        <p>Importance of crouching?</p>
+        <p>1st instance of a similar position: "She raised her head off the bed, lay down on her side and curled up." (88)</p>
+        <p>2nd instance in the shed scene: "Beloved drops her hand. 'I'm like this.'  Denver watches as Beloved bends over, curls up and rocks." (146)</p>
+    `,
+    ],
+    [
+        9,
+        /*html*/ `
+        <p>Moldy bread</p>
+        <p>Another mention of "she"</p>
+        <p>Brown from the dead bodies</p>`,
+    ],
+    [
+        10,
+        /*html*/ `
+        <p>"She" doesn't have earrings anymore</p>
+    `,
+    ],
+    [
+        17,
+        /*html*/ `
+        <p>"They" referring to the dead</p>
+    `,
+    ],
+    [
+        19,
+        /*html*/ `<p>"ghosts without skin stuck their fingers in her and said beloved in the dark and bitch in the light" (284)</p>`,
+    ],
+    [
+        27,
+        /*html*/ `
+        <p>"'Heavy,' murmured Beloved. 'This place is heavy.'" (65)</p>
+    `,
+    ],
+    [
+        30,
+        /*html*/ `
+        <p></p>
+    `,
+    ],
+    [
+        49,
+        /*html*/ `
+        <p>"Was a girl locked up in the house with a whiteman over by Deer Creek. Found him dead last summer and the girl gone. (277)"</p>
+    `,
+    ],
+    [
+        57,
+        /*html*/ `<p>"Whatever it is, it comes from outside this house, outside the yard, and it can come right on in the yard if it wants to. So I never leave this house and I watch over the yard, so it can't happen again and my mother won't have to kill me too." (242)</p>`,
+    ],
+]);
 
 class Selected {
     /**@param {Number}i @param {HTMLSpanElement} poi @param {HTMLDivElement} annotation*/
@@ -26,12 +95,6 @@ function setSelected(i) {
     scroll();
 }
 
-/**@param {number}direction*/
-function crementPair(direction) {
-    const n = Math.max(0, Math.min(selected.i + direction, count - 1));
-    setSelected(n);
-}
-
 /**@param {HTMLSpanElement}poi @param {HTMLDivElement} annotation*/
 function scroll() {
     excerpt.scrollTo(0, selected["poi"].offsetTop - window.innerHeight / 2);
@@ -41,21 +104,27 @@ function scroll() {
     );
 }
 
-excerpt.onclick = () => {
-    excerpt.focus();
-    focusIndicator.style.left = 0;
-};
-annotations.onclick = () => {
-    annotations.focus();
-    focusIndicator.style.left = "50%";
-};
-excerpt.focus();
+// /**@param {number}direction*/
+// function crementPair(direction) {
+//     const n = Math.max(0, Math.min(selected.i + direction, count - 1));
+//     setSelected(n);
+// }
 
-const wheel = (/**@type {WheelEvent}*/ event) => {
-    crementPair(Math.sign(event.deltaY));
-};
-excerpt.onwheel = wheel;
-annotations.onwheel = wheel;
+// excerpt.onclick = () => {
+//     excerpt.focus();
+//     focusIndicator.style.left = 0;
+// };
+// annotations.onclick = () => {
+//     annotations.focus();
+//     focusIndicator.style.left = "50%";
+// };
+// excerpt.focus();
+
+// const wheel = (/**@type {WheelEvent}*/ event) => {
+//     crementPair(Math.sign(event.deltaY));
+// };
+// excerpt.onwheel = wheel;
+// annotations.onwheel = wheel;
 
 let count = 0;
 for (const poi of document.getElementsByClassName("poi")) {
@@ -67,7 +136,10 @@ for (const poi of document.getElementsByClassName("poi")) {
     const annotation = document.createElement("div");
     annotation.id = `annotation_${count}`;
     annotation.classList.add("annotation");
-    annotation.innerText = poi.id;
+    annotation.innerHTML += /*html*/ `
+    <p>${poi.id}</p>
+    ${annotationMap.get(count) ?? "N/A"}
+    `;
 
     const i = count;
     const click = setSelected.bind(null, i);

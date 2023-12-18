@@ -1,5 +1,8 @@
 p {
     margin: 0;
+}
+
+#chapter_1 p {
     text-indent: 4vmin;
 }
 
@@ -8,17 +11,17 @@ p {
     /* background-color: red; */
 }
 
-.poi:not(:last-child)::after {
+:not(.lines)>*>.poi:not(:last-child)::after {
     content: "\2003";
     /* background-color: orange; */
 }
 
 .poi>span:hover {
-    background-color: gainsboro;
+    background-color: whitesmoke;
 }
 
 .poi[selected]>span {
-    background-color: yellow;
+    background-color: gainsboro;
     transition: all 0.5s linear;
 }
 
@@ -45,15 +48,15 @@ main {
     scroll-behavior: smooth;
 
     height: 100%;
-    /* overflow-y: scroll; */
-    overflow-y: hidden;
+    overflow-y: scroll;
+    /* overflow-y: hidden; */
 
     width: 50%;
     display: flex;
     flex-direction: column;
 }
 
-#focus_indicator {
+/* #focus_indicator {
     position: absolute;
     width: 50%;
     height: 2.5vmin;
@@ -66,31 +69,24 @@ main {
     position: absolute;
     width: 0;
     height: 0;
-    border-top: 5vmin solid transparent;
-    border-bottom: 5vmin solid transparent;
+    border-top: 2.5vmin solid transparent;
+    border-bottom: 2.5vmin solid transparent;
     top: 50%;
     transform: translateY(-50%);
 }
 
 #focus_left {
-    border-left: 5vmin solid gray;
+    border-left: 2.5vmin solid gray;
 }
 
 #focus_right {
     right: 0;
-    border-right: 5vmin solid gray;
-}
+    border-right: 2.5vmin solid gray;
+} */
 
 #excerpt {
     gap: 10vmin;
 }
-
-/* #excerpt:focus {
-  width: 60%;
-}
-#excerpt:not(:focus) {
-  width: 40%;
-} */
 
 .chapter {
     display: flex;
@@ -109,14 +105,9 @@ main {
     gap: 3vmin;
 }
 
-#annotations {}
-
-/* #annotations:focus {
-  width: 60%;
+#annotations {
+    row-gap: 3vmin;
 }
-#annotations:not(:focus) {
-  width: 40%;
-} */
 
 .annotation {
     user-select: none;
@@ -124,10 +115,49 @@ main {
 }
 
 .annotation:hover {
-    background-color: gainsboro;
+    background-color: whitesmoke;
 }
 
 .annotation[selected] {
-    background-color: yellow;
+    background-color: gainsboro;
     transition: all 0.5s linear;
+}
+
+.call::before,
+.response::before,
+.beloved::before,
+.sethe::before,
+.denver::before {
+    display: inline-block;
+    width: 5vmin;
+    font-weight: bold;
+}
+
+.call::before {
+    content: "Call: ";
+}
+
+.response::before {
+    content: "";
+}
+
+.response::after {
+    margin-left: 5vmin;
+    content: "Response";
+    font-weight: bold;
+}
+
+.beloved::before {
+    content: "B: ";
+    color: pink
+}
+
+.sethe::before {
+    content: "S: ";
+    color: crimson
+}
+
+.denver::before {
+    content: "D: ";
+    color: seagreen
 }
