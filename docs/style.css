@@ -1,59 +1,67 @@
 p {
-    margin: 0;
+  margin: 0;
 }
 
 #chapter_1 p {
-    text-indent: 4vmin;
+  text-indent: 4vmin;
+}
+
+.annotated::before {
+  content: "📀";
 }
 
 .spaced:not(:last-child)::after {
-    content: "\2003";
-    /* background-color: red; */
+  content: "\2003";
+  /* background-color: red; */
 }
 
-:not(.lines)>*>.poi:not(:last-child)::after {
-    content: "\2003";
-    /* background-color: orange; */
+:not(.lines) > * > .poi:not(:last-child)::after {
+  content: "\2003";
+  /* background-color: orange; */
 }
 
-.poi>span:hover {
-    background-color: whitesmoke;
+.poi > span:hover {
+  background-color: whitesmoke;
 }
 
-.poi[selected]>span {
-    background-color: gainsboro;
-    transition: all 0.5s linear;
+.poi.annotated:not([selected]) > span:hover {
+  background-color: lightyellow;
+}
+
+.poi[selected] > span {
+  background-color: gainsboro;
+  transition: all 0.5s linear;
 }
 
 .flush,
 #chapter_2 p {
-    text-indent: 0;
+  text-indent: 0;
 }
 
 body {
-    margin: 0;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 2vmin;
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2vmin;
 }
 
 main {
-    display: flex;
-    height: 100vh;
-    /* overflow: scroll; */
+  display: flex;
+  height: 100vh;
+  /* overflow: scroll; */
 }
 
 .column {
-    box-sizing: border-box;
-    padding: 50vh 5vmin;
-    scroll-behavior: smooth;
+  box-sizing: border-box;
+  padding: 50vh 5vmin;
+  scroll-behavior: smooth;
 
-    height: 100%;
-    overflow-y: scroll;
-    /* overflow-y: hidden; */
+  height: 100%;
+  overflow-y: scroll;
+  /* overflow-y: hidden; */
 
-    width: 50%;
-    display: flex;
-    flex-direction: column;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* #focus_indicator {
@@ -85,42 +93,42 @@ main {
 } */
 
 #excerpt {
-    gap: 10vmin;
+  gap: 10vmin;
 }
 
 .chapter {
-    display: flex;
-    flex-direction: column;
-    gap: 3vmin;
+  display: flex;
+  flex-direction: column;
+  gap: 3vmin;
 }
 
 .section {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .poem {
-    display: flex;
-    flex-direction: column;
-    gap: 3vmin;
+  display: flex;
+  flex-direction: column;
+  gap: 3vmin;
 }
 
 #annotations {
-    row-gap: 3vmin;
+  row-gap: 3vmin;
 }
 
 .annotation {
-    user-select: none;
-    cursor: pointer;
+  user-select: none;
+  cursor: pointer;
 }
 
 .annotation:hover {
-    background-color: whitesmoke;
+  background-color: whitesmoke;
 }
 
 .annotation[selected] {
-    background-color: gainsboro;
-    transition: all 0.5s linear;
+  background-color: gainsboro;
+  transition: all 0.5s linear;
 }
 
 .call::before,
@@ -128,36 +136,48 @@ main {
 .beloved::before,
 .sethe::before,
 .denver::before {
-    display: inline-block;
-    width: 5vmin;
-    font-weight: bold;
+  display: inline-block;
+  width: 6vmin;
+  font-weight: bold;
 }
 
 .call::before {
-    content: "Call: ";
+  content: "Call: ";
 }
 
 .response::before {
-    content: "";
+  content: "";
 }
 
 .response::after {
-    margin-left: 5vmin;
-    content: "Response";
-    font-weight: bold;
+  margin-left: 5vmin;
+  content: "Response";
+  font-weight: bold;
 }
 
 .beloved::before {
-    content: "B: ";
-    color: pink
+  content: "B: ";
+  color: pink;
+}
+
+.beloved.annotated::before {
+  content: "B: 📀";
 }
 
 .sethe::before {
-    content: "S: ";
-    color: crimson
+  content: "S: ";
+  color: crimson;
+}
+
+.sethe.annotated::before {
+  content: "S: 📀";
 }
 
 .denver::before {
-    content: "D: ";
-    color: seagreen
+  content: "D: ";
+  color: seagreen;
+}
+
+.denver.annotated::before {
+  content: "D: 📀";
 }
