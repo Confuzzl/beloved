@@ -1,5 +1,6 @@
 p {
     margin: 0;
+    /* font-size: x-large; */
 }
 
 #chapter_1 p {
@@ -15,25 +16,25 @@ p {
     /* background-color: red; */
 }
 
-:not(.lines)>*>.poi:not(:last-child)::after {
+:not(.lines) > * > .poi:not(:last-child)::after {
     content: "\2003";
     /* background-color: orange; */
 }
 
-.poi>span:hover {
+.poi > span:hover {
     background-color: whitesmoke;
 }
 
-.poi.annotated:not([selected])>span:hover {
+.poi.annotated:not([selected]) > span:hover {
     background-color: ivory;
 }
 
-.poi[selected]>span {
+.poi[selected] > span {
     background-color: gainsboro;
     transition: all 0.5s linear;
 }
 
-.poi.annotated[selected]>span {
+.poi.annotated[selected] > span {
     background-color: lightgoldenrodyellow;
 }
 
@@ -45,7 +46,8 @@ p {
 body {
     margin: 0;
     font-family: "Times New Roman", Times, serif;
-    font-size: 2vmin;
+    /* font-size: 2vmin; */
+    font-size: x-large;
 }
 
 main {
