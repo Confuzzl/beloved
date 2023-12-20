@@ -143,7 +143,7 @@ main {
 .sethe::before,
 .denver::before {
     display: inline-block;
-    width: 6vmin;
+    width: 10vmin;
     font-weight: bold;
 }
 
@@ -158,7 +158,7 @@ main {
 .response::after {
     /* margin-left: 5vmin; */
     float: right;
-    margin-right: 57%;
+    margin-right: 30%;
     content: "Response";
     font-weight: bold;
 }
